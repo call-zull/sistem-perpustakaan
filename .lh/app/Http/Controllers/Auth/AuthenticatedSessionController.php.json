@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Http/Controllers/Auth/AuthenticatedSessionController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731556655263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731569018551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,11 @@\n         $request->session()->regenerate();\n \n         if (Auth::user()->role == 'admin') {\n             return redirect('/admin');\n-        }\n+        }elseif(Auth::user()->role == 'user'){\n+            return redirect('/admin');\n+        }else\n \n         return redirect()->intended(route('dashboard', absolute: false));\n     }\n \n"
+                },
+                {
+                    "date": 1731569038320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,8 @@\n         if (Auth::user()->role == 'admin') {\n             return redirect('/admin');\n         } elseif (Auth::user()->role == 'user') {\n             return redirect('/admin');\n-        } else {\n-\n         }\n \n         return redirect()->intended(route('dashboard', absolute: false));\n     }\n"
+                }
+            ],
+            "date": 1731556655263,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Auth;\n\nuse App\\Http\\Controllers\\Controller;\nuse App\\Http\\Requests\\Auth\\LoginRequest;\nuse Illuminate\\Http\\RedirectResponse;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Auth;\nuse Illuminate\\View\\View;\n\nclass AuthenticatedSessionController extends Controller\n{\n    /**\n     * Display the login view.\n     */\n    public function create(): View\n    {\n        return view('auth.login');\n    }\n\n    /**\n     * Handle an incoming authentication request.\n     */\n    public function store(LoginRequest $request): RedirectResponse\n    {\n        $request->authenticate();\n    \n        $request->session()->regenerate();\n    \n        // Menambahkan pengecekan role setelah login\n        if (Auth::user()->role == 'admin') {\n            return redirect('/admin');\n        }\n    \n        return redirect()->intended(route('dashboard', absolute: false));\n    }\n\n    /**\n     * Destroy an authenticated session.\n     */\n    public function destroy(Request $request): RedirectResponse\n    {\n        Auth::guard('web')->logout();\n\n        $request->session()->invalidate();\n\n        $request->session()->regenerateToken();\n\n        return redirect('/');\n    }\n}"
+        }
+    ]
+}

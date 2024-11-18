@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2024_11_14_015652_add_role_to_users_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731549429282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731556268100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     public function up(): void\n     {\n         // Menambahkan kolom 'role' setelah kolom 'password' di tabel 'users'\n         Schema::table('users', function (Blueprint $table) {\n-            $table->string('role')->after('password');\n+            $table->string('role')->after('password')->nullable()->default('user');\n         });\n     }\n \n     /**\n"
+                }
+            ],
+            "date": 1731549429281,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        // Menambahkan kolom 'role' setelah kolom 'password' di tabel 'users'\n        Schema::table('users', function (Blueprint $table) {\n            $table->string('role')->after('password');\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::table('users', function (Blueprint $table) {\n            //\n        });\n    }\n};"
+        }
+    ]
+}

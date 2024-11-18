@@ -1,0 +1,30 @@
+{
+    "sourceFile": "resources/views/dashboard.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731549294368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731555805764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+<x-app-layout>\n+    <x-slot name=\"header\">\n+        <h2 class=\"font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight\">\n+            {{ __('Dashboard') }}\n+        </h2>\n+    </x-slot>\n+\n+    <div class=\"py-12\">\n+        <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n+            <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\n+                <div class=\"p-6 text-gray-900 dark:text-gray-100\">\n+                    {{ __(\"anda sudah masuk\") }}\n+                </div>\n+            </div>\n+        </div>\n+    </div>\n+</x-app-layout>\n"
+                },
+                {
+                    "date": 1731556174553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,22 +14,4 @@\n             </div>\n         </div>\n     </div>\n </x-app-layout>\n-<x-app-layout>\n-    <x-slot name=\"header\">\n-        <h2 class=\"font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight\">\n-            {{ __('Dashboard') }}\n-        </h2>\n-    </x-slot>\n-\n-    <div class=\"py-12\">\n-        <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n-            <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\n-                <div class=\"p-6 text-gray-900 dark:text-gray-100\">\n-                    {{ __(\"You're logged in!\") }}\n-                </div>\n-                ini halaman dashboard user\n-            </div>\n-        </div>\n-    </div>\n-</x-app-layout>\n"
+                },
+                {
+                    "date": 1731562208967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     <div class=\"py-12\">\n         <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n             <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\n                 <div class=\"p-6 text-gray-900 dark:text-gray-100\">\n-                    {{ __(\"anda sudah masuk\") }}\n+                    {{ __(\"in halaman user\") }}\n                 </div>\n             </div>\n         </div>\n     </div>\n"
+                }
+            ],
+            "date": 1731549294368,
+            "name": "Commit-0",
+            "content": "<x-app-layout>\n    <x-slot name=\"header\">\n        <h2 class=\"font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight\">\n            {{ __('Dashboard') }}\n        </h2>\n    </x-slot>\n\n    <div class=\"py-12\">\n        <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\n            <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\n                <div class=\"p-6 text-gray-900 dark:text-gray-100\">\n                    {{ __(\"You're logged in!\") }}\n                </div>\n                ini halaman dashboard user\n            </div>\n        </div>\n    </div>\n</x-app-layout>\n"
+        }
+    ]
+}

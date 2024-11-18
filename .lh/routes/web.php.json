@@ -1,0 +1,82 @@
+{
+    "sourceFile": "routes/web.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1731556679977,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731556689243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,5 +20,5 @@\n     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');\n     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');\n });\n \n-require __DIR__.'/auth.php';\n\\ No newline at end of file\n+require __DIR__ . '/auth.php';\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731560052398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n });\n \n Route::get('/dashboard', function () {\n     return view('dashboard');\n-})->middleware(['auth', 'verified'])->name('dashboard');\n+})->middleware(['auth', 'role:user'])->name('dashboard');\n \n Route::middleware(['auth', 'verified'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n"
+                },
+                {
+                    "date": 1731560061159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n Route::get('/dashboard', function () {\n     return view('dashboard');\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n-Route::middleware(['auth', 'verified'])->get('/admin', function () {\n+Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n \n Route::middleware('auth')->group(function () {\n"
+                },
+                {
+                    "date": 1731561181143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,10 @@\n Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n \n+\n+\n Route::middleware('auth')->group(function () {\n     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');\n     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');\n     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');\n"
+                },
+                {
+                    "date": 1731561195538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,15 @@\n Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n \n+Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {\n+    // Route::get('/', function () {\n+    //     return view('dosen.index');\n+    // })->name('dosen.dashboard');\n+    Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n \n+});\n \n Route::middleware('auth')->group(function () {\n     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');\n     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');\n"
+                },
+                {
+                    "date": 1731561201601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n \n-Route::prefix('dosen')->middleware(['auth', 'role:dosen'])->group(function () {\n+Route::prefix('admin')->middleware(['auth', 'role:dosen'])->group(function () {\n     // Route::get('/', function () {\n     //     return view('dosen.index');\n     // })->name('dosen.dashboard');\n     Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n"
+                },
+                {
+                    "date": 1731561215150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n Route::prefix('admin')->middleware(['auth', 'role:dosen'])->group(function () {\n     // Route::get('/', function () {\n     //     return view('dosen.index');\n     // })->name('dosen.dashboard');\n-    Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n+    // Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n \n });\n \n Route::middleware('auth')->group(function () {\n"
+                },
+                {
+                    "date": 1731561302233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n     return view('admin');\n })->name('admin');\n \n-Route::prefix('admin')->middleware(['auth', 'role:dosen'])->group(function () {\n+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {\n     // Route::get('/', function () {\n     //     return view('dosen.index');\n     // })->name('dosen.dashboard');\n     // Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n"
+                },
+                {
+                    "date": 1731561333745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,9 @@\n     return view('admin');\n })->name('admin');\n \n Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {\n-    // Route::get('/', function () {\n-    //     return view('dosen.index');\n-    // })->name('dosen.dashboard');\n-    // Route::get('/', [DosenController::class, 'index'])->name('dosen.dashboard');\n+    Route::resource('admin/users', UserController::class);\n \n });\n \n Route::middleware('auth')->group(function () {\n"
+                },
+                {
+                    "date": 1731561340506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     return view('admin');\n })->name('admin');\n \n Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {\n-    Route::resource('admin/users', UserController::class);\n+    Route::resource('admin/users', BookController::class);\n \n });\n \n Route::middleware('auth')->group(function () {\n"
+                },
+                {
+                    "date": 1731561346102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n \n+use App\\Http\\Controllers\\BookController;\n use App\\Http\\Controllers\\ProfileController;\n use Illuminate\\Support\\Facades\\Route;\n \n Route::get('/', function () {\n"
+                },
+                {
+                    "date": 1731561354318,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     return view('admin');\n })->name('admin');\n \n Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {\n-    Route::resource('admin/users', BookController::class);\n+    Route::resource('admin/books', BookController::class);\n \n });\n \n Route::middleware('auth')->group(function () {\n"
+                },
+                {
+                    "date": 1731568313672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,16 @@\n Route::get('/dashboard', function () {\n     return view('dashboard');\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n-Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n-    return view('admin');\n-})->name('admin');\n+Route::get('/admin', function () {\n+    return view('dashboard');\n+})->middleware(['auth', 'role:user'])->name('dashboard');\n \n+// Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n+//     return view('admin');\n+// })->name('admin');\n+\n Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {\n     Route::resource('admin/books', BookController::class);\n \n });\n"
+                },
+                {
+                    "date": 1731568320352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     return view('dashboard');\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n Route::get('/admin', function () {\n-    return view('dashboard');\n+    return view('admin');\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n // Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n //     return view('admin');\n"
+                },
+                {
+                    "date": 1731568325633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n Route::get('/admin', function () {\n     return view('admin');\n-})->middleware(['auth', 'role:user'])->name('dashboard');\n+})->middleware(['auth', 'role:admin'])->name('dashboard');\n \n // Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n //     return view('admin');\n // })->name('admin');\n"
+                },
+                {
+                    "date": 1731568332301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n })->middleware(['auth', 'role:user'])->name('dashboard');\n \n Route::get('/admin', function () {\n     return view('admin');\n-})->middleware(['auth', 'role:admin'])->name('dashboard');\n+})->middleware(['auth', 'role:admin'])->name('admin');\n \n // Route::middleware(['auth', 'role:admin'])->get('/admin', function () {\n //     return view('admin');\n // })->name('admin');\n"
+                }
+            ],
+            "date": 1731556679977,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse App\\Http\\Controllers\\ProfileController;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/', function () {\n    return view('welcome');\n});\n\nRoute::get('/dashboard', function () {\n    return view('dashboard');\n})->middleware(['auth', 'verified'])->name('dashboard');\n\nRoute::middleware(['auth', 'verified'])->get('/admin', function () {\n    return view('admin');\n})->name('admin');\n\nRoute::middleware('auth')->group(function () {\n    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');\n    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');\n    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');\n});\n\nrequire __DIR__.'/auth.php';"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "app/Http/Middleware/RoleMiddleware.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731559823057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731559833130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,8 @@\n     {\n         // Cek jika user sudah login dan memiliki role yang sesuai\n         if (Auth::check()) {\n             if (Auth::user()->role !== $role) {\n-                // Jika role tidak sesuai, redirect ke halaman yang sesuai (misalnya dashboard untuk user yang mencoba akses admin)\n                 return redirect()->route('dashboard');\n             }\n         }\n \n"
+                },
+                {
+                    "date": 1731560127226,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,13 +17,24 @@\n      * @return \\Illuminate\\Http\\Response\n      */\n     public function handle(Request $request, Closure $next, $role)\n     {\n+        if (!Auth::check()) {\n+            return redirect('/login'); // Redirect jika belum login\n+        }\n+\n+        $user = Auth::user();\n+\n+        if (!in_array($user->role, $roles)) {\n+            return redirect('/'); // Redirect jika tidak memiliki hak akses\n+        }\n+        \n         if (Auth::check()) {\n             if (Auth::user()->role !== $role) {\n                 return redirect()->route('dashboard');\n             }\n         }\n \n+\n         return $next($request);\n     }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731560453865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,18 +17,9 @@\n      * @return \\Illuminate\\Http\\Response\n      */\n     public function handle(Request $request, Closure $next, $role)\n     {\n-        if (!Auth::check()) {\n-            return redirect('/login'); // Redirect jika belum login\n-        }\n-\n-        $user = Auth::user();\n-\n-        if (!in_array($user->role, $roles)) {\n-            return redirect('/'); // Redirect jika tidak memiliki hak akses\n-        }\n-\n+        \n         if (Auth::check()) {\n             if (Auth::user()->role !== $role) {\n                 return redirect()->route('dashboard');\n             }\n"
+                }
+            ],
+            "date": 1731559823057,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Middleware;\n\nuse Closure;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Auth;\n\nclass RoleMiddleware\n{\n    /**\n     * Handle an incoming request.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @param  \\Closure  $next\n     * @param  string  $role\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function handle(Request $request, Closure $next, $role)\n    {\n        // Cek jika user sudah login dan memiliki role yang sesuai\n        if (Auth::check()) {\n            if (Auth::user()->role !== $role) {\n                // Jika role tidak sesuai, redirect ke halaman yang sesuai (misalnya dashboard untuk user yang mencoba akses admin)\n                return redirect()->route('dashboard');\n            }\n        }\n\n        return $next($request);\n    }\n}"
+        }
+    ]
+}

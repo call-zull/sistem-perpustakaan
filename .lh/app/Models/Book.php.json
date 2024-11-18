@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Models/Book.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731561742814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731561742814,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Book extends Model\n{\n    protected $fillable = ['title', 'author', 'year'];\n}"
+        }
+    ]
+}

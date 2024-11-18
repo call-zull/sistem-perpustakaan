@@ -1,0 +1,30 @@
+{
+    "sourceFile": "database/migrations/2024_11_14_051138_create_books_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731561564470,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731561571223,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,9 @@\n use Illuminate\\Database\\Migrations\\Migration;\n use Illuminate\\Database\\Schema\\Blueprint;\n use Illuminate\\Support\\Facades\\Schema;\n \n-return new class extends Migration\n-{\n+return new class extends Migration {\n     /**\n      * Run the migrations.\n      */\n     public function up(): void\n"
+                },
+                {
+                    "date": 1731561584405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         Schema::create('books', function (Blueprint $table) {\n             $table->id();\n             $table->string('title');\n             $table->string('author');\n-            $table->text('description');\n+            $table->string('Tahun');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1731561594598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         Schema::create('books', function (Blueprint $table) {\n             $table->id();\n             $table->string('title');\n             $table->string('author');\n-            $table->string('Tahun');\n+            $table->string('year');\n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1731561564470,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('books', function (Blueprint $table) {\n            $table->id();\n            $table->string('title');\n            $table->string('author');\n            $table->text('description');\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('books');\n    }\n};"
+        }
+    ]
+}

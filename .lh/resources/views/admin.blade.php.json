@@ -1,0 +1,26 @@
+{
+    "sourceFile": "resources/views/admin.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731556209174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731556219244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     <div class=\"py-12\">\r\n         <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\r\n             <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\r\n                 <div class=\"p-6 text-gray-900 dark:text-gray-100\">\r\n-                    {{ __(\"anda sudah masuk\") }}\r\n+                    {{ __(\"Ini halaman admin\") }}\r\n                 </div>\r\n             </div>\r\n         </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1731562192708,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+<x-app-layout>\r\n+    <x-slot name=\"header\">\r\n+        <h2 class=\"font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight\">\r\n+            {{ __('Admin') }}\r\n+        </h2>\r\n+    </x-slot>\r\n+\r\n+    <div class=\"py-12\">\r\n+        <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\r\n+            <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\r\n+                <div class=\"p-6 text-gray-900 dark:text-gray-100\">\r\n+                    {{ __(\"Ini halaman admin\") }}\r\n+                </div>\r\n+            </div>\r\n+        </div>\r\n+    </div>\r\n+</x-app-layout>\r\n"
+                }
+            ],
+            "date": 1731556209174,
+            "name": "Commit-0",
+            "content": "<x-app-layout>\r\n    <x-slot name=\"header\">\r\n        <h2 class=\"font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight\">\r\n            {{ __('Dashboard') }}\r\n        </h2>\r\n    </x-slot>\r\n\r\n    <div class=\"py-12\">\r\n        <div class=\"max-w-7xl mx-auto sm:px-6 lg:px-8\">\r\n            <div class=\"bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg\">\r\n                <div class=\"p-6 text-gray-900 dark:text-gray-100\">\r\n                    {{ __(\"anda sudah masuk\") }}\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</x-app-layout>\r\n"
+        }
+    ]
+}

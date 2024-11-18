@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/seeders/DatabaseSeeder.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731556339297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731556366795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,7 +17,8 @@\n \n         User::factory()->create([\n             'name' => 'admin',\n             'email' => 'admin@admin.com',\n+            'role'=> 'admin'\n         ]);\n     }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731564633103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,8 @@\n \n         User::factory()->create([\n             'name' => 'admin',\n             'email' => 'admin@admin.com',\n-            'role'=> 'admin'\n+            'role' => 'admin'\n         ]);\n     }\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1731556339297,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace Database\\Seeders;\n\nuse App\\Models\\User;\n// use Illuminate\\Database\\Console\\Seeds\\WithoutModelEvents;\nuse Illuminate\\Database\\Seeder;\n\nclass DatabaseSeeder extends Seeder\n{\n    /**\n     * Seed the application's database.\n     */\n    public function run(): void\n    {\n        // User::factory(10)->create();\n\n        User::factory()->create([\n            'name' => 'admin',\n            'email' => 'admin@admin.com',\n        ]);\n    }\n}"
+        }
+    ]
+}
